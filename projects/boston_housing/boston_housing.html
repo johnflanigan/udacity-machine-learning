@@ -12212,7 +12212,7 @@ Given an R^2 score of 0.923, this model has successfully captured the variation 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>By having too large of a training size, you might risk overfitting the model by providing training it on too much data. Then when the model is put into production it may not be able to accomodate variations in the data. By giving it too little training data, you risk underfitting the model. It might not have had enough data to train on and be too general to be useful.</p>
+<p>The benefit of splitting a dataset into training and testing subsets is that you are able to ensure that the model returns accurate results on data it has never seen before (i.e. the testing data). You can use the training data to train the model and ensure that it is not underfitted by verify it performs well on the training data. Then, to ensure it is generalized and not overfitted, you can test it on using the testing data, data that it has not been trained.</p>
 
 </div>
 </div>
@@ -12418,7 +12418,7 @@ At a maximum depth of 10, the model exhibits signs of high variance. It appears 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Grid search exhaustively considers all parameter combinations in order to find the optimal parameters to use in a model.</p>
+<p>Grid search exhaustively considers all parameter combinations in order to find the optimal parameters to use in a model. The grid search consists of an estimator, parameter space, cross validation sets, and a score function. An example of a parameter in a model that could be optimized is the max_depth we were creating learning curves for previously.</p>
 
 </div>
 </div>
@@ -12444,7 +12444,13 @@ At a maximum depth of 10, the model exhibits signs of high variance. It appears 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>k-fold cross-validation is the method of splitting up the training set into k subsets of data. Then k-1 of these sets are used for the training while the remaining set is used for validation purposes. This prevents overfitting as it reserves the test data only for final testing instead of parameter validation.</p>
+<p>k-fold cross-validation is the method of splitting up the training set into k subsets, or "folds", of data. Then, for each fold, the following is done:</p>
+<ul>
+<li>k-1 of the sets are used for training</li>
+<li>the remaing set is used to validate the results</li>
+</ul>
+<p>The resulting performance metric is the average of the values computed in the loop.</p>
+<p>This prevents overfitting as it reserves the test data only for final testing instead of parameter validation.</p>
 
 </div>
 </div>
@@ -12768,6 +12774,7 @@ Range in prices: $73,357.39
 <p>The features are not sufficient as there is more to home value than just the number of rooms. All of the factors mentioned and more should be factored in in order to get a more complete picture of the homes value.</p>
 <p>The data collected in an urban area would not likely be applicable in a rural area. For one, size of the home is likely less indicitive of home value as space is less of a concern.</p>
 <p>It is not fair or logical to judge the price of a home based on the entire neighborhood. Useful information such as trends can be drawn from neighborhood data, but each home still needs to be priced at an individual level in order to achieve the most accurate price.</p>
+<p>In conclusion, this model can provide some interesting insights into Boston neighborhoods from 1978, but is not sufficient to predict home prices in today's market. It should not be used in a real-world setting to predict home prices.</p>
 
 </div>
 </div>
